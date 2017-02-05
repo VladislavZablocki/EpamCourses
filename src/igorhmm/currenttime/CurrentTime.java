@@ -14,7 +14,7 @@ public class CurrentTime {
 	 */	 
 	static public String getTime(String timeFormat) {
 		Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
-        return simpleDateFormat.format(calendar.getTime());
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
+		return simpleDateFormat.format(calendar.getTime());
    	}
 }
