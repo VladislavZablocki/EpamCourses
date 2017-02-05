@@ -7,6 +7,6 @@ package igorhmm.currenttime;
 public class EntryPoint {
     public static void main(String[] args) {		
         //TODO: make time format as constant value 
-	    System.out.println("Current time is " + CurrentTime.getTime("HH:mm"));
+        System.out.println("Current time is " + CurrentTime.getTime("HH:mm"));
     }
 }

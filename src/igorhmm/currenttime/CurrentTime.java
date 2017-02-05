@@ -12,7 +12,7 @@ public class CurrentTime {
 	 * @param  timeFormat Desirable format for current time output
 	 * @return current time
 	 */	 
-    static public String getTime(String timeFormat) {
+	static public String getTime(String timeFormat) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
         return simpleDateFormat.format(calendar.getTime());
