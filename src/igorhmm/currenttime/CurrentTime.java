@@ -13,7 +13,7 @@ public class CurrentTime {
 	 * @return current time
 	 */	 
 	static public String getTime(String timeFormat) {
-        Calendar calendar = Calendar.getInstance();
+		Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
         return simpleDateFormat.format(calendar.getTime());
    	}
