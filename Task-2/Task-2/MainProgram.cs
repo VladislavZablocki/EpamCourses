@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Task_2
 {
+<<<<<<< HEAD:Task-2/Task-2/MainProgram.cs
 
     // This class alows us to write options from command line
+=======
+    // This class alows us to take options from command line
+    // and write these options
+>>>>>>> b2f1862010155bd96dd429f758790e05e5923e01:Task-2/Task-2/Program.cs
     class Parser
     {
         public string[] splittingOptions;
@@ -112,10 +117,17 @@ namespace Task_2
             Console.ReadLine();
         }
     }
+<<<<<<< HEAD:Task-2/Task-2/MainProgram.cs
 
     // Class in which program started.
     // Also we take options from command line.
     class MainProgram
+=======
+   
+    // Class in which program started.
+    // Also we take options from command line.
+    class Main
+>>>>>>> b2f1862010155bd96dd429f758790e05e5923e01:Task-2/Task-2/Program.cs
     {
         static void Main(string[] args)
         {
