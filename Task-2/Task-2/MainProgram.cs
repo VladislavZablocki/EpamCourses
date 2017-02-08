@@ -15,7 +15,6 @@ namespace Task_2
             this.splittingOptions = splittingOptions;
             WriteOnConsoleOptions();
         }
-
         private void WriteOnConsoleOptions()
         {
             Console.WriteLine("Your input options : ");
@@ -27,31 +26,7 @@ namespace Task_2
         }
     }
 
-    // This class we use to check number of options.
-    // If less than three programm will be exits.
-    class Checker
-    {
-        public string[] splittingOptions;
-
-        public Checker(string[] splittingOptions)
-        {
-            this.splittingOptions = splittingOptions;
-        }
-
-        public bool Check()
-        {
-            if (splittingOptions.Length < 3)
-            {
-                Console.WriteLine("Your number of options less than 3.Press any key to finish...");
-                Console.ReadLine();
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
+   
 
     // This class has a method "RandomingThreeOptions", which returns to us array 
     // with three numbers. These numbers indicate which three options will be printed.
@@ -59,9 +34,6 @@ namespace Task_2
     {
         int[] numberOfThreeOptions = new int[3];
         Random random = new Random();
-        public Rarandomizer()
-        { }
-
         public int[] RandomingThreeOptions(int maxNumberOfRandom)
         {
             for (int i = 0; i < 3; )
@@ -91,7 +63,6 @@ namespace Task_2
     {
         int[] numberOfThreeOptions;
         public string[] splittingOptions;
-        
 
         public Printer(string[] splittingOptions, int[] numberOfThreeOptions)
         {
@@ -135,6 +106,7 @@ namespace Task_2
             if (resolution < 3)
             {
                 Console.WriteLine("Your number of options less than 3.Press any key to finish...");
+                Console.ReadLine();
                 return false;
             }
             else
