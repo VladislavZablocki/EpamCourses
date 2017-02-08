@@ -112,8 +112,8 @@ namespace Task_2
             Console.ReadLine();
         }
     }
-
-    class Program
+   
+    class Main
     {
         static void Main(string[] args)
         {
