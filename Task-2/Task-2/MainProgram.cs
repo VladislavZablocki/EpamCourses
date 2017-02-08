@@ -91,13 +91,12 @@ namespace Task_2
     {
         int[] numberOfThreeOptions;
         public string[] splittingOptions;
-        int numberOfSplittingOptions;
+        
 
         public Printer(string[] splittingOptions, int[] numberOfThreeOptions)
         {
             this.numberOfThreeOptions = numberOfThreeOptions;
             this.splittingOptions = splittingOptions;
-            this.numberOfSplittingOptions = splittingOptions.Length;
         }
 
         public void Print()
