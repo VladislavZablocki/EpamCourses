@@ -113,6 +113,8 @@ namespace Task_2
         }
     }
    
+    // Class in which program started.
+    // Also we take options from command line.
     class Main
     {
         static void Main(string[] args)
