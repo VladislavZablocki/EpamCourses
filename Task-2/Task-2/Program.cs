@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Task_2
 {
-
     // This class alows us to take options from command line
     // and write these options
     class Parser
