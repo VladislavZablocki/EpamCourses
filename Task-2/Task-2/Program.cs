@@ -14,10 +14,10 @@ namespace Task_2
         public Parser(string[] splittingOptions)
         {
             this.splittingOptions = splittingOptions;
-            WriteOptions();
+            WriteOnConsoleOptions();
         }
 
-        private void WriteOptions()
+        private void WriteOnConsoleOptions()
         {
             Console.WriteLine("Your input options : ");
             foreach (var item in splittingOptions)
