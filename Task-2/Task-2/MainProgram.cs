@@ -7,25 +7,24 @@ using System.Threading.Tasks;
 namespace Task_2
 {
 
-    // This class alows us to take options from command line
-    // and write these options
+    // This class alows us to write options from command line
     class Parser
     {
         public string[] splittingOptions;
         public Parser(string[] splittingOptions)
         {
             this.splittingOptions = splittingOptions;
-            WriteOptions();
+            WriteOnConsoleOptions();
         }
 
-        private void WriteOptions()
+        private void WriteOnConsoleOptions()
         {
             Console.WriteLine("Your input options : ");
             foreach (var item in splittingOptions)
             {
-                Console.Write(item+" ");
+                Console.Write(item + " ");
             }
-            Console.WriteLine();   
+            Console.WriteLine();
         }
     }
 
@@ -48,7 +47,7 @@ namespace Task_2
                 Console.ReadLine();
                 return false;
             }
-            else 
+            else
             {
                 return true;
             }
@@ -69,7 +68,7 @@ namespace Task_2
             for (int i = 0; i < 3; )
             {
                 int similarity = 0;
-                int randomNumber = random.Next(1, maxNumberOfRandom+1);
+                int randomNumber = random.Next(1, maxNumberOfRandom + 1);
                 foreach (var items in numberOfThreeOptions)
                 {
                     if (items == randomNumber)
@@ -94,17 +93,17 @@ namespace Task_2
         int[] numberOfThreeOptions;
         public string[] splittingOptions;
         int numberOfSplittingOptions;
-        Rarandomizer randomizer = new Rarandomizer();
 
-        public Printer(string[] splittingOptions)
+        public Printer(string[] splittingOptions, int[] numberOfThreeOptions)
         {
+            this.numberOfThreeOptions = numberOfThreeOptions;
             this.splittingOptions = splittingOptions;
             this.numberOfSplittingOptions = splittingOptions.Length;
         }
 
         public void Print()
         {
-            numberOfThreeOptions = randomizer.RandomingThreeOptions(splittingOptions.Length);
+
             foreach (var items in numberOfThreeOptions)
             {
                 Console.WriteLine(splittingOptions[items - 1]);
@@ -114,18 +113,36 @@ namespace Task_2
         }
     }
 
-    class Program
+    // Class in which program started.
+    // Also we take options from command line.
+    class MainProgram
     {
         static void Main(string[] args)
         {
             Parser parser = new Parser(args);
-            Checker checker = new Checker(parser.splittingOptions);
-            if (checker.Check() == false)
+            if (Resolution(parser.splittingOptions.Length) == false)
             {
                 return;
             }
-            Printer printer = new Printer(parser.splittingOptions);
-            printer.Print();
+            else
+            {
+                Rarandomizer randomizer = new Rarandomizer();
+                Printer printer = new Printer(parser.splittingOptions, randomizer.RandomingThreeOptions(parser.splittingOptions.Length));
+                printer.Print();
+            }
+        }
+
+        static bool Resolution(int resolution)
+        {
+            if (resolution < 3)
+            {
+                Console.WriteLine("Your number of options less than 3.Press any key to finish...");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
