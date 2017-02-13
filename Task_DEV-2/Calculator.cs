@@ -11,7 +11,7 @@ namespace task_DEV_2
     {
         private string inputString;
         private string expressionOperator = "*-+/";
-
+        enum Operation {Default, Add, Subtract, Multiply, Divide };
         // constructor 
         public Calculator(string inputString)
         {
@@ -21,7 +21,7 @@ namespace task_DEV_2
         // method which make oeration with 2 variables
         // and return result
         private double[] ResultOfOperation(double[] stack, ref bool[] isNumber,
-            int stackCount, string operation)
+            int stackCount, Operation operation)
         {
             double firstVariable = 0;
             double secondVariable = 0;
@@ -52,16 +52,16 @@ namespace task_DEV_2
             }
             switch (operation)
             {
-                case "*":
+                case Operation.Multiply:
                     stack[stackCount] = firstVariable * secondVariable;
                     return stack;
-                case "/":
+                case Operation.Subtract:
                     stack[stackCount] = firstVariable / secondVariable;
                     return stack;
-                case "+":
+                case Operation.Add:
                     stack[stackCount] = firstVariable + secondVariable;
                     return stack;
-                case "-":
+                case Operation.Divide:
                     stack[stackCount] = firstVariable - secondVariable;
                     return stack;
                 default:
@@ -80,7 +80,7 @@ namespace task_DEV_2
             double[] stack = new double[converter.GetQuantityOfOperation()];
             bool[] isNumber = new bool[converter.GetQuantityOfOperation()];
             int stackCount = 0;
-            string operation=null;
+            Operation operation=Operation.Default;
 
             foreach (var item in outputString)
             {
@@ -93,7 +93,21 @@ namespace task_DEV_2
                     if (item == oper.ToString())
                     {
                         isOperator = true;
-                        operation = oper.ToString();
+                        switch (oper.ToString())
+                        {
+                            case "+":
+                                operation = Operation.Add;
+                                break;
+                            case "-":
+                                operation = Operation.Divide;
+                                break;
+                            case "*":
+                                operation=Operation.Multiply;
+                                break;
+                            case "/":
+                                operation = Operation.Subtract;
+                                break;
+                        }
                         break;
                     }
                 }
@@ -104,7 +118,7 @@ namespace task_DEV_2
                 }
                 else
                 {
-                    stack = ResultOfOperation(stack,ref isNumber, stackCount, operation);
+                    stack = ResultOfOperation(stack,ref isNumber, stackCount,operation );
                     isOperator = false;
                 }
                 stackCount++;

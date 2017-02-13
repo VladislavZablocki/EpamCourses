@@ -12,6 +12,7 @@ namespace task_DEV_2
     {
         private string inputString;
         private string expressionOperator = "*-+/()";
+        enum Operation { Default, Add,Subtract,Multiply,Divide };
 
         // concstructor 
         public Converter(string inputString)
@@ -77,20 +78,20 @@ namespace task_DEV_2
         }
 
         // return priority of operatoin
-        private int GetPriority(string expressionOperator)
+        private Operation GetPriority(string expressionOperator)
         {
             switch (expressionOperator)
             {
                 case "*":
-                    return 2;
+                    return Operation.Multiply;
                 case "/":
-                    return 2;
+                    return Operation.Subtract;
                 case "+":
-                    return 1;
+                    return Operation.Add;
                 case "-":
-                    return 1;
+                    return Operation.Divide;
                 default:
-                    return 0;
+                    return Operation.Default;
             }
         }
 
