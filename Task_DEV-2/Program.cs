@@ -27,7 +27,12 @@ namespace task_DEV_2
                 }
             }
             Checker checker = new Checker();
-            checker.CheakInputString(inputString);
+            if(checker.CheakInputString(ref inputString))
+            {
+                Calculator calculator = new Calculator(inputString);
+                Console.WriteLine(calculator.Calculate());
+                Console.ReadKey();
+            }
         }
     }
 }

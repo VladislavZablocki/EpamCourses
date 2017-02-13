@@ -12,7 +12,7 @@ namespace task_DEV_2
         private string expressionOperator = "*-+/";
 
         // method check input string for correctness 
-        public void CheakInputString(string inputString)
+        public bool CheakInputString(ref string inputString)
         {
             bool error = false;
             inputString = EditingString(inputString);
@@ -47,12 +47,11 @@ namespace task_DEV_2
             {
                 Console.WriteLine("Error! Check your input data!");
                 Console.ReadKey();
+                return false;
             }
             else
             {
-                Calculator calculator = new Calculator(inputString);
-                Console.WriteLine(calculator.Calculate());
-                Console.ReadKey();
+                return true;
             }
         }
 
@@ -68,9 +67,12 @@ namespace task_DEV_2
                     {
                         foreach (var secondOper in expressionOperator)
                         {
-                            if (inputString[i+1] == secondOper)
+                            if (i + 1 < inputString.Length)
                             {
-                                return true;
+                                if (inputString[i + 1] == secondOper)
+                                {
+                                    return true;
+                                }
                             }
                         }
                     }
