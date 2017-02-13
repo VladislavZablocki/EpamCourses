@@ -21,11 +21,11 @@ namespace task_DEV_2
         }
 
         // splittig string to array of string
-        // in this array elements is operator or variable
+        // in this array elements is operator or numbers
         private string[] SplittingString()
         {
-            string[] changedString = new string[GetQuantityOfOperation()];
-            string cell = null;
+            string[] splittingSring = new string[GetQuantityOfOperation()];
+            string cell = null; // cell contains incomplete string of numbers
             bool isOperator = false;
             int newCount = 0;
 
@@ -33,7 +33,7 @@ namespace task_DEV_2
             {
                 foreach (var oper in expressionOperator)
                 {
-                    if (inputString[i] == oper)
+                    if (inputString[i] == oper) // finding operator
                     {
                         isOperator = true;
                         break;
@@ -42,7 +42,8 @@ namespace task_DEV_2
                 if (isOperator == false)
                 {
                     cell = String.Concat(cell, inputString[i]);
-                    if (inputString[i] == 'E' || inputString[i] == 'e')
+                    // if we have exponentional form we add to cell next symbol + or -
+                    if (inputString[i] == 'E' || inputString[i] == 'e') 
                     {
                         i++;
                         cell = String.Concat(cell, inputString[i]);
@@ -50,22 +51,21 @@ namespace task_DEV_2
                 }
                 else
                 {
-                    if (i == 0)
+                    if (i == 0) // if it was first operator add them to splitting String
                     {
-                        changedString[newCount] = inputString[i].ToString();
+                        splittingSring[newCount] = inputString[i].ToString();
                     }
                     else
                     {
-                        if (cell == null)
+                        if (cell == null) // we cheak it to not add null cell to splitting cell
                         {
-                            changedString[newCount] = inputString[i].ToString();
-
+                            splittingSring[newCount] = inputString[i].ToString();
                         }
-                        else
+                        else // we add cell to splitting string and add operator
                         {
-                            changedString[newCount] = cell;
+                            splittingSring[newCount] = cell;
                             newCount++;
-                            changedString[newCount] = inputString[i].ToString();
+                            splittingSring[newCount] = inputString[i].ToString();
                             cell = null;
                         }
                     }
@@ -73,8 +73,8 @@ namespace task_DEV_2
                     isOperator = false;
                 }
             }
-            changedString[newCount] = cell;
-            return changedString;
+            splittingSring[newCount] = cell; // add еhe remaining cell
+            return splittingSring;
         }
 
         // return priority of operatoin

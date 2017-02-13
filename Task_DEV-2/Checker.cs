@@ -121,6 +121,7 @@ namespace task_DEV_2
         }
         
         // method which checkcorrectness of record numbers in exponention form
+        // check exponentional form here i prevents unnecessary operation
         private bool CheckRecordNumbersInExponentForm(string inputString)
         {
             for (int i = 0; i < inputString.Length; i++)

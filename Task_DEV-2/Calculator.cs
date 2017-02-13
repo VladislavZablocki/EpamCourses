@@ -77,7 +77,11 @@ namespace task_DEV_2
             Converter converter = new Converter(inputString);
             bool isOperator = false;
             string[] outputString = converter.ConvertingFromInfixToPostfix();
-            double[] stack = new double[converter.GetQuantityOfOperation()];
+
+            //in stack are variable on which we do operation
+            double[] stack = new double[converter.GetQuantityOfOperation()]; 
+
+            // using isNumber we understand what elements of stack has variable
             bool[] isNumber = new bool[converter.GetQuantityOfOperation()];
             int stackCount = 0;
             Operation operation=Operation.Default;
