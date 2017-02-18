@@ -12,7 +12,7 @@
         /// <returns>true if correct, false if incorrect</returns>
         public bool CheckName(string name)
         {
-            if (name == "")
+            if (string.Empty==name)
             {
                 return false;
             }
@@ -54,11 +54,7 @@
         /// <returns>true if correct, false if incorrect</returns>
         public bool CheckAge(int age)
         {
-            if (age <= 0)
-            {
-                return false;
-            }
-            return true;
+            return (age > 0);
         }
 
         /// <summary>
@@ -68,11 +64,7 @@
         /// <returns>true if correct, false if incorrect</returns>
         public bool CheckSex(string sex)
         {
-            if (string.Compare(sex, "man") != 0 && string.Compare(sex, "women") != 0)
-            {
-                return false;
-            }
-            return true;
+            return (string.Compare(sex, "man") == 0 || string.Compare(sex, "women") == 0);
         }
     }
 }

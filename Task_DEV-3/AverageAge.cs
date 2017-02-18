@@ -14,7 +14,7 @@ namespace task_DEV_3
         /// <param name="persons">List of input persons</param>
         public void CalculateAverageAge(List<Person> persons)
         {
-            int sum = 0;
+            float sum = 0;
             for (int i = 0; i < persons.Count; i++)
             {
                 sum += persons[i].GetAge();
