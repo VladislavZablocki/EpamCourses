@@ -7,6 +7,10 @@
     {
         private int wordsCount;
 
+        /// <summary>
+        /// Searching words that have more than 5 symbols
+        /// </summary>
+        /// <param name="inputString">input string</param>
         public void SearchingWords(string inputString)
         {
             string[] allWords = inputString.Split(' ');
