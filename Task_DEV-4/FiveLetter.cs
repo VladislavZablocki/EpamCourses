@@ -3,7 +3,7 @@
     /// <summary>
     /// class in which searched words which have more than 5 symbols
     /// </summary>
-    class MoreThanFiveChars
+    class FiveLetter
     {
         private int wordsCount;
 

@@ -13,7 +13,7 @@ namespace task_DEV_4
         {
             int count = 0;
             string inputString;
-            MoreThanFiveChars moreThanFiveChars = new MoreThanFiveChars();
+            FiveLetter moreThanFiveChars = new FiveLetter();
             PairOfLetterFrequency pairOfLetterFrequency = new PairOfLetterFrequency();
             while (count < 3)
             {
