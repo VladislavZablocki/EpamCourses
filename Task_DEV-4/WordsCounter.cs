@@ -6,7 +6,7 @@
     class WordsCounter
     {
         private int wordsCount;
-        private int length = 5;
+        private const int length = 5;
         
         /// <summary>
         /// Searching words with length = five or more letter (a-z,A-Z) 

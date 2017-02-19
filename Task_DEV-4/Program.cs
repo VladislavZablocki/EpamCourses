@@ -22,7 +22,7 @@ namespace task_DEV_4
                 wordsCounter.SearchingWords(inputString);
                 Console.WriteLine(wordsCounter.ToString());
                 setOfLetterFrequency.CalculateFrequency(inputString);
-                setOfLetterFrequency.OutpurPairs();
+                setOfLetterFrequency.OutputSets();
                 count++;
             }
         }

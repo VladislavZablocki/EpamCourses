@@ -53,8 +53,8 @@
         /// <returns>string which contain set of letter and frequency</returns>
         public override string ToString()
         {
-            return string.Concat("Set of letter : ",set,
-                " ; frequency : ",frequency.ToString("0.000"));
+            return string.Concat("Set of letter : ", set,
+                " ; frequency : ", frequency.ToString("0.000"));
         }
 
     }

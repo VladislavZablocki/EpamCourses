@@ -11,7 +11,7 @@ namespace task_DEV_4
         private List<string> allSets = new List<string>();
         private List<SetOfLetter> notDuplicateSets = new List<SetOfLetter>();
         private int countOfAllSets;
-        private int lengthOfSet = 2;
+        private const int lengthOfSet = 2;
 
         /// <summary>
         /// Calculate frequency for sets of letter
@@ -103,7 +103,7 @@ namespace task_DEV_4
         /// <summary>
         /// Output all original Sets and frequency
         /// </summary>
-        public void OutpurPairs()
+        public void OutputSets()
         {
             Console.WriteLine("Frequency : ");
             foreach (var item in notDuplicateSets)
