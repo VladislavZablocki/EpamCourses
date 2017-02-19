@@ -1,25 +1,25 @@
 ﻿namespace task_DEV_4
 {
     /// <summary>
-    /// Class keeps pair of letter, count of this pair in all strings before
-    /// and frequency of this pair
+    /// Class keeps set of letter, count of this sets in all strings before
+    /// and frequency of this sets
     /// </summary>
-    class PairOfLetter
+    class SetOfLetter
     {
-        private string pair;
+        private string set;
         private int count;
         private double frequency;
 
         // fields properties 
-        public string Pair 
+        public string Set
         {
             get
             {
-                return pair;
+                return set;
             }
             set
             {
-                pair = value;
+                set = value;
             }
         }
 
@@ -50,10 +50,10 @@
         /// <summary>
         /// Overrided method ToString 
         /// </summary>
-        /// <returns>string which conrain pair of letter and frequency</returns>
+        /// <returns>string which contain set of letter and frequency</returns>
         public override string ToString()
         {
-            return string.Concat("Pair of letter : ",pair,
+            return string.Concat("Set of letter : ",set,
                 " ; frequency : ",frequency.ToString("0.000"));
         }
 

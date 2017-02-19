@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MoreThanFiveChars.cs" />
-    <Compile Include="PairOfLetter.cs" />
-    <Compile Include="PairOfLetterFrequency.cs" />
+    <Compile Include="WordsCounter.cs" />
+    <Compile Include="SetOfLetter.cs" />
+    <Compile Include="SetOfLetterFrequency.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -13,8 +13,8 @@ namespace task_DEV_4
         {
             int count = 0;
             string inputString;
-            FiveLetter moreThanFiveChars = new FiveLetter();
-            PairOfLetterFrequency pairOfLetterFrequency = new PairOfLetterFrequency();
+            WordsCounter moreThanFiveChars = new WordsCounter();
+            SetOfLetterFrequency pairOfLetterFrequency = new SetOfLetterFrequency();
             while (count < 3)
             {
                 Console.WriteLine("Enter you string");
