@@ -13,16 +13,16 @@ namespace task_DEV_4
         {
             int count = 0;
             string inputString;
-            WordsCounter moreThanFiveChars = new WordsCounter();
-            SetOfLetterFrequency pairOfLetterFrequency = new SetOfLetterFrequency();
+            WordsCounter wordsCounter = new WordsCounter();
+            SetOfLetterFrequency setOfLetterFrequency = new SetOfLetterFrequency();
             while (count < 3)
             {
                 Console.WriteLine("Enter you string");
                 inputString = Console.ReadLine();
-                moreThanFiveChars.SearchingWords(inputString);
-                Console.WriteLine(moreThanFiveChars.ToString());
-                pairOfLetterFrequency.CalculateFrequency(inputString);
-                pairOfLetterFrequency.OutpurPairs();
+                wordsCounter.SearchingWords(inputString);
+                Console.WriteLine(wordsCounter.ToString());
+                setOfLetterFrequency.CalculateFrequency(inputString);
+                setOfLetterFrequency.OutpurPairs();
                 count++;
             }
         }
