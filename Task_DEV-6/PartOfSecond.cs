@@ -5,7 +5,7 @@ namespace task_DEV_6
     /// <summary>
     /// convert input format to part of seconds
     /// </summary>
-    class PartOfSecond : GetDate
+    class PartOfSecond : IGetDateOrTime
     {
         private DateTime dateTime;
 
@@ -32,7 +32,6 @@ namespace task_DEV_6
             if (format.Contains("F"))
             {
                 outputSplitOfSeconds = outputSplitOfSeconds.Substring(0, format.Length);
-
                 if (int.Parse(outputSplitOfSeconds) == 0)
                 {
                     outputSplitOfSeconds = "0";

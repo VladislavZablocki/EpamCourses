@@ -5,7 +5,7 @@ namespace task_DEV_6
     /// <summary>
     /// convert input format to hour
     /// </summary>
-    class Hour : GetDate
+    public class Hour : IGetDateOrTime
     {
         private DateTime dateTime;
 
@@ -13,41 +13,31 @@ namespace task_DEV_6
         {
             this.dateTime = dateTime;
         }
+
         public string GetInFormat(string format)
         {
-            string outputHour = string.Empty;
-            int hour = dateTime.Hour;
+            string outputHour = dateTime.Hour.ToString();
             if (format.Contains("H"))
             {
-                if (format.Length == 1)
-                {
-                    outputHour = hour.ToString();
-                }
                 if (format.Length == 2)
                 {
-                    outputHour = hour.ToString();
-                    if (hour < 10)
+                    if (int.Parse(outputHour) < 10)
                     {
-                        outputHour = string.Concat("0", hour.ToString());
+                        outputHour = string.Concat("0", outputHour);
                     }
                 }
             }
             else
             {
-                if (hour > 12)
+                if (int.Parse(outputHour) > 12)
                 {
-                    hour -= 12; 
-                }
-                if (format.Length == 1)
-                {
-                    outputHour = hour.ToString();
+                    outputHour = (int.Parse(outputHour) - 12).ToString(); 
                 }
                 if (format.Length == 2)
                 {
-                    outputHour = hour.ToString();
-                    if (hour < 10)
+                    if (int.Parse(outputHour) < 10)
                     {
-                        outputHour = string.Concat("0", hour.ToString());
+                        outputHour = string.Concat("0", outputHour);
                     }
                 }
             }
