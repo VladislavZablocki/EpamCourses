@@ -6,7 +6,7 @@ namespace task_DEV_6
     /// <summary>
     /// Class which convert input string to real date and time
     /// </summary>
-    class DateAndTimeWithUserFormats
+    public class DateAndTimeUserFormatsConverter
     {
         //list which consists strings with formats and not formats
         private List<string> splittigStrings = new List<string>();
@@ -21,17 +21,17 @@ namespace task_DEV_6
         /// <returns>string with real time and date</returns>
         public string Convert(string inputString)
         {
-            GetDate getDate = null;
+            IGetDateOrTime getDateOrTime = null;
             SplitingString(inputString);
             string outputDateAndTime = string.Empty;
             foreach (var item in splittigStrings)
             {
                 int indexOfDateOrTime = formatSymbols.IndexOf(item[0].ToString());
-                getDate = ChooseFormat(indexOfDateOrTime);
-                if (getDate != null)
+                getDateOrTime = ChooseFormat(indexOfDateOrTime);
+                if (getDateOrTime != null)
                 {
-                    outputDateAndTime = string.Concat(outputDateAndTime, getDate.GetInFormat(item));
-                    getDate = null;
+                    outputDateAndTime = string.Concat(outputDateAndTime, getDateOrTime.GetInFormat(item));
+                    getDateOrTime = null;
                 }
                 else
                 {
@@ -46,34 +46,34 @@ namespace task_DEV_6
         /// </summary>
         /// <param name="indexOfDateOrTime">index coincidence with format symbols</param>
         /// <returns>date or time</returns>
-        private GetDate ChooseFormat(int indexOfDateOrTime)
+        private IGetDateOrTime ChooseFormat(int indexOfDateOrTime)
         {
-            GetDate getDate = null;
+            IGetDateOrTime getDate = null;
             if (indexOfDateOrTime == 0)
             {
                 getDate = new Day(dateTime);
             }
-            if (indexOfDateOrTime == 1)
+            else if (indexOfDateOrTime == 1)
             {
                 getDate = new Month(dateTime);
             }
-            if (indexOfDateOrTime == 2)
+            else if (indexOfDateOrTime == 2)
             {
                 getDate = new Year(dateTime);
             }
-            if (indexOfDateOrTime == 3 || indexOfDateOrTime == 4)
+            else if (indexOfDateOrTime == 3 || indexOfDateOrTime == 4)
             {
                 getDate = new Hour(dateTime);
             }
-            if (indexOfDateOrTime == 5)
+            else if (indexOfDateOrTime == 5)
             {
                 getDate = new Minutes(dateTime);
             }
-            if (indexOfDateOrTime == 6)
+            else if (indexOfDateOrTime == 6)
             {
                 getDate = new Seconds(dateTime);
             }
-            if (indexOfDateOrTime == 7 || indexOfDateOrTime == 8)
+            else if (indexOfDateOrTime == 7 || indexOfDateOrTime == 8)
             {
                 getDate = new PartOfSecond(dateTime);
             }
@@ -104,6 +104,11 @@ namespace task_DEV_6
                 {
                     cell = string.Concat(cell, inputString[i]);
                 }
+            }
+            if (!string.IsNullOrEmpty(cell))
+            {
+                splittigStrings.Add(cell);
+                cell = null;
             }
         }
 

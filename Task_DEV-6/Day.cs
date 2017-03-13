@@ -5,7 +5,7 @@ namespace task_DEV_6
     /// <summary>
     /// convert input format to day
     /// </summary>
-    class Day : GetDate
+    public class Day : IGetDateOrTime
     {
         private DateTime dateTime;
 

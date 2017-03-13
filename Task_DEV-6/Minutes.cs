@@ -5,7 +5,7 @@ namespace task_DEV_6
     /// <summary>
     /// convert input format to minutes
     /// </summary>
-    class Minutes : GetDate
+    public class Minutes : IGetDateOrTime
     {
         private DateTime dateTime;
 

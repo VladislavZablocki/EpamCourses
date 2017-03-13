@@ -5,7 +5,7 @@ namespace task_DEV_6
     /// <summary>
     /// convert input format to year
     /// </summary>
-    class Year : GetDate
+    public class Year : IGetDateOrTime
     {
         private DateTime dateTime;
 
@@ -31,7 +31,10 @@ namespace task_DEV_6
             }
             if (format.Length == 3)
             {
-                outputYear = outputYear.Substring(outputYear.Length - 3, 3);
+                if (outputYear.Length < 3)
+                {
+                    outputYear = string.Concat("0", outputYear);
+                }
             }
             if (format.Length == 4)
             {

@@ -10,8 +10,8 @@ namespace task_DEV_6
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            DateAndTimeWithUserFormats dateAndTimeFormater = new DateAndTimeWithUserFormats();
-            Console.WriteLine(dateAndTimeFormater.Convert(Console.ReadLine()));
+            DateAndTimeUserFormatsConverter dateAndTimeConverter = new DateAndTimeUserFormatsConverter();
+            Console.WriteLine(dateAndTimeConverter.Convert(Console.ReadLine()));
         }
     }
 }
