@@ -5,17 +5,15 @@ using OpenQA.Selenium.Chrome;
 namespace task_DEV_13
 {
     [TestClass]
-    public class ChromeTests
+    public class ChromeTests : BrowserTests
     {
-        private string validLogin = "tat-dev13";
-        private string validPassword = "23.03.2017";
-        TestsMethods testMethods = new TestsMethods(@"https://mail.ru/");
+        TestsMethods testMethods = new TestsMethods(url);
 
         [TestMethod]
         public void Chrome_ValidLoginValidPasword_Messages()
         {
-            string expected = testMethods.TestAuthorizationWithMailPageNext(new ChromeDriver(), validLogin, validPassword);
-            string actual = "Входящие";
+            string actual  = testMethods.TestAuthorizationWithMailPageNext(new ChromeDriver(), validLogin, validPassword);
+            string expected= "Входящие";
             Assert.AreEqual(expected, actual);
         }
 
@@ -36,24 +34,24 @@ namespace task_DEV_13
         [TestMethod]
         public void Chrome_InvalidLoginvalidPassword_Authorization()
         {
-            string actual = "Авторизация";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new ChromeDriver(), "qwerty", validLogin, actual);
+            string expected = "Авторизация";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new ChromeDriver(), "qwerty", validLogin, expected);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Chrome_ValidLoginInvalidPassword_Authorization()
         {
-            string actual = "Авторизация";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new ChromeDriver(), validLogin, "qwerty", actual);
+            string expected = "Авторизация";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new ChromeDriver(), validLogin, "qwerty", expected);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Chrome_EmptyLoginPassword_Authorization()
         {
-            string actual = "Авторизация";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new ChromeDriver(), "", "", actual);
+            string expected = "Авторизация";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new ChromeDriver(), "", "", expected);
             Assert.AreEqual(expected, actual);
         }
     }

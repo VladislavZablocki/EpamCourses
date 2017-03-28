@@ -6,17 +6,15 @@ using OpenQA.Selenium.Firefox;
 namespace task_DEV_13
 {
     [TestClass]
-    public class MozilaTests
+    public class MozilaTests : BrowserTests
     {
-        TestsMethods testMethods = new TestsMethods(@"https://mail.ru/");
-        private string validLogin = "tat-dev13";
-        private string validPassword = "23.03.2017";
+        TestsMethods testMethods = new TestsMethods(url);
 
         [TestMethod]
         public void Mozila_ValidLoginValidPassword_Messages()
         {
-            string expected = testMethods.TestAuthorizationWithMailPageNext(new FirefoxDriver(), validLogin, validPassword);
-            string actual = "Входящие";
+            string actual= testMethods.TestAuthorizationWithMailPageNext(new FirefoxDriver(), validLogin, validPassword);
+            string expected = "Входящие";
             Assert.AreEqual(expected, actual);
         }
 
@@ -37,16 +35,16 @@ namespace task_DEV_13
         [TestMethod]
         public void Mozila_InvalidLoginValidPassword_Authorization()
         {
-            string actual = "Авторизация";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new FirefoxDriver(), "qwerty", validPassword, actual);
+            string expected = "Авторизация";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new FirefoxDriver(), "qwerty", validPassword, expected);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void Mozila_ValidLoginInvalidPassword_Authorization()
         {
-            string actual = "Авторизация";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new FirefoxDriver(), validLogin, "qwerty", actual);
+            string expected = "Авторизация";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new FirefoxDriver(), validLogin, "qwerty", expected);
             Assert.AreEqual(expected, actual);
         }
 
@@ -54,8 +52,8 @@ namespace task_DEV_13
         [ExpectedException(typeof(WebDriverTimeoutException))]
         public void Mozila_EmptyLoginPassword_Authorization()
         {
-            string actual = "Авторизация";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new FirefoxDriver(), "", "", actual);
+            string expected = "Авторизация";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new FirefoxDriver(), "", "", expected);
             Assert.AreEqual(expected, actual);
         }
     }

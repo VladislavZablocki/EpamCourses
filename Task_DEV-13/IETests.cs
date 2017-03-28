@@ -6,17 +6,16 @@ using OpenQA.Selenium.IE;
 namespace task_DEV_13
 {
     [TestClass]
-    public class IETests
+    public class IETests : BrowserTests
     {
-        private string validLogin = "tat-dev13";
-        private string validPassword = "23.03.2017";
-        TestsMethods testMethods = new TestsMethods(@"https://mail.ru/");
+        
+        TestsMethods testMethods = new TestsMethods(url);
 
         [TestMethod]
         public void IE_ValidLoginValidPassword_Messages()
         {
-            string expected = testMethods.TestAuthorizationWithMailPageNext(new InternetExplorerDriver(), validLogin, validPassword);
-            string actual = "Входящие";
+            string actual = testMethods.TestAuthorizationWithMailPageNext(new InternetExplorerDriver(), validLogin, validPassword);
+            string expected = "Входящие";
             Assert.AreEqual(expected, actual);
         }
 
@@ -29,7 +28,7 @@ namespace task_DEV_13
 
         [TestMethod]
         [ExpectedException(typeof(WebDriverTimeoutException))]
-        public void IE_InvalidLoginValidPassword_Exception()
+        public void IE_ValidLoginInvalidPassword_Exception()
         {
             testMethods.TestAuthorizationWithMailPageNext(new InternetExplorerDriver(), validLogin, "qwerty");
         }
@@ -37,16 +36,16 @@ namespace task_DEV_13
         [TestMethod]
         public void IE_InvalidLoginValidPassword_Authorization()
         {
-            string actual = "Вход - Почта Mail.Ru";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new InternetExplorerDriver(), "qwerty", validPassword, actual);
+            string expected = "Вход - Почта Mail.Ru";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new InternetExplorerDriver(), "qwerty", validPassword, expected);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void IE_ValidLoginInvalidPassword_Authorization()
         {
-            string actual = "Вход - Почта Mail.Ru";
-            string expected = testMethods.TestAuthorizationWithAuthorizationPageNext(new InternetExplorerDriver(), validLogin, "qwerty", actual);
+            string expected = "Вход - Почта Mail.Ru";
+            string actual = testMethods.TestAuthorizationWithAuthorizationPageNext(new InternetExplorerDriver(), validLogin, "qwerty", expected);
             Assert.AreEqual(expected, actual);
         }
 
