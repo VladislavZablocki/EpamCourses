@@ -4,6 +4,7 @@ namespace FrameWork
 {
     class CreateCommandCheckLinkByhref : CommandCreator
     {
+        private string href;
         public CreateCommandCheckLinkByhref(CommandCreator Successor)
         {
             this.Successor = Successor;
@@ -14,7 +15,8 @@ namespace FrameWork
             ICommand command = null;
             if (commandString.Contains(Resources.CheckLinkPresentByHref))
             {
-                command = new СheckLinkPresentByHrefCommand(tester);
+                ParseCommand(commandString);
+                command = new СheckLinkPresentByHrefCommand(tester,href);
             }
             else
             {
@@ -25,7 +27,8 @@ namespace FrameWork
 
         public override void ParseCommand(string command)
         {
-            throw new NotImplementedException();
+            string[] splitString = command.Split(separators, 2);
+            href = splitString[1].Replace("\"", "");
         }
     }
 }

@@ -4,6 +4,7 @@ namespace FrameWork
 {
     class CreateCommandCheckLinkPresentByName : CommandCreator
     {
+        private string name;
         public CreateCommandCheckLinkPresentByName(CommandCreator Successor)
         {
             this.Successor = Successor;
@@ -14,7 +15,8 @@ namespace FrameWork
             ICommand command = null;
             if (commandString.Contains(Resources.CheckLinkPresentByName))
             {
-                command = new CheckLinkPresentByNameCommand(tester);
+                ParseCommand(commandString);
+                command = new CheckLinkPresentByNameCommand(tester,name);
             }
             else
             {
@@ -25,7 +27,8 @@ namespace FrameWork
 
         public override void ParseCommand(string command)
         {
-            throw new NotImplementedException();
+            string[] splitString = command.Split(separators, 2);
+            name = splitString[1].Replace("\"", "");
         }
     }
 }

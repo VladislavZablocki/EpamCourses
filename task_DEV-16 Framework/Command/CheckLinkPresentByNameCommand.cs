@@ -2,14 +2,16 @@
 {
     class CheckLinkPresentByNameCommand : ICommand
     {
-        Tester tester;
-        public CheckLinkPresentByNameCommand(Tester tester)
+        private Tester tester;
+        private string name;
+        public CheckLinkPresentByNameCommand(Tester tester,string name)
         {
+            this.name = name;
             this.tester = tester;
         }
         public void Execute()
         {
-            tester.CheckLinkPresentByName();
+            tester.CheckLinkPresentByName(name);
         }
     }
 }

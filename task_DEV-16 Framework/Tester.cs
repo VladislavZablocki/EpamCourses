@@ -7,9 +7,12 @@ using System.Diagnostics;
 
 namespace FrameWork
 {
+    /// <summary>
+    /// Class with tests methods
+    /// </summary>
     public class Tester
     {
-        private string OutputPathFile = @"E:\c#\FrameWork\statistics.txt";
+        private string outputPathFile;
         private Page page;
         private string readingPathFile;
         private ICommand command;
@@ -18,12 +21,16 @@ namespace FrameWork
         private IWebDriver driver = new ChromeDriver();
         private Logger logger = new Logger();
 
-        public Tester(string readingPathFile, CommandCreator commandForTests)
+        public Tester(string readingPathFile,string outputPathFile, CommandCreator commandForTests)
         {
+            this.outputPathFile = outputPathFile;
             this.readingPathFile = readingPathFile;
             this.commandForTests = commandForTests;
         }
 
+        /// <summary>
+        /// Method wich read string with command from file and execute this command
+        /// </summary>
         public void ReadCommand()
         {
             using (StreamReader streamReader = new StreamReader(readingPathFile))
@@ -33,12 +40,24 @@ namespace FrameWork
                 {
                     lastCommand = line;
                     command = commandForTests.CreateCommand(line, this);
-                    command.Execute();
+                    if (command == null)
+                    {
+                        ResultString resultString = new ResultString(false, lastCommand, TimeSpan.Zero);
+                    }
+                    else
+                    {
+                        command.Execute();
+                    }
                 }
-                logger.WriteStatistics(OutputPathFile);
+                logger.WriteStatistics(outputPathFile);
             }
         }
 
+        /// <summary>
+        /// Open page
+        /// </summary>
+        /// <param name="url">url page</param>
+        /// <param name="timeout">timeout for opening page</param>
         public void Open(string url,double timeout)
         {
             Stopwatch testTime = new Stopwatch();
@@ -50,20 +69,38 @@ namespace FrameWork
             logger.addTestResult(resultString);
         }
 
-        public void CheckLinkByHref()
+        /// <summary>
+        /// Check link of page by href
+        /// </summary>
+        /// <param name="href">href</param>
+        public void CheckLinkByHref(string href)
         {
             Stopwatch testTime = new Stopwatch();
             testTime.Start();
+            bool isContains = page.IsLinkExistByHref(href);
             testTime.Stop();
+            ResultString resultString = new ResultString(isContains, lastCommand, testTime.Elapsed);
+            logger.addTestResult(resultString);
         }
 
-        public void CheckLinkPresentByName()
+        /// <summary>
+        /// check link by name of this link
+        /// </summary>
+        /// <param name="name"></param>
+        public void CheckLinkPresentByName(string name)
         {
             Stopwatch testTime = new Stopwatch();
             testTime.Start();
+            bool isContains = page.IsLinkExistByName(name);
             testTime.Stop();
+            ResultString resultString = new ResultString(isContains, lastCommand, testTime.Elapsed);
+            logger.addTestResult(resultString);
         }
 
+        /// <summary>
+        /// check content of page
+        /// </summary>
+        /// <param name="content">content</param>
         public void CheckPageContains(string content)
         {
             Stopwatch testTime = new Stopwatch();
@@ -74,6 +111,10 @@ namespace FrameWork
             logger.addTestResult(resultString);
         }
 
+        /// <summary>
+        /// check title of page
+        /// </summary>
+        /// <param name="title">title</param>
         public void CheckPageTitle(string title)
         {
             Stopwatch testTime = new Stopwatch();

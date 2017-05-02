@@ -2,14 +2,16 @@
 {
     class СheckLinkPresentByHrefCommand : ICommand
     {
-        Tester tester;
-        public СheckLinkPresentByHrefCommand(Tester tester)
+        private Tester tester;
+        private string href;
+        public СheckLinkPresentByHrefCommand(Tester tester,string href)
         {
+            this.href = href;
             this.tester = tester;
         }
         public void Execute()
         {
-            tester.CheckLinkByHref();
+            tester.CheckLinkByHref(href);
         }
     }
 }
