@@ -106,7 +106,7 @@ namespace task_DEV_7
         /// <returns>number of day</returns>
         private int MaxNumberOfDayInMonth()
         {
-            int day = dayInMonth[dateAndTime.Month];
+            int day = dayInMonth[dateAndTime.Month-1];
             if (dateAndTime.Month == 2 && IsLeapYear())
             {
                 day++;
