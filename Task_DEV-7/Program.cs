@@ -19,7 +19,7 @@ namespace task_DEV_7
             {
                 dateAndTime = converter.Convert(inputString);
                 DateAndTimeChecker dateAndTimeChecker = new DateAndTimeChecker(dateAndTime);
-                dateAndTimeChecker.Check();
+                dateAndTimeChecker.CheckResultsWriter();
             }
             Console.ReadKey();
         }

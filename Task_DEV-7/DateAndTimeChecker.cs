@@ -13,36 +13,41 @@ namespace task_DEV_7
         private const int MaxValueOfMonth = 12;
         private const int MaxValueOfHour = 24;
         private const int MaxValueOfMinutes = 60;
-
+        private const string IncorrectYear = "Year is incorrect!";
+        private const string IncorrectMonth = "Month is incorrect!";
+        private const string IncorrectDay = "Day is incorrect!";
+        private const string IncorrectHour = "Hour is incorrect!";
+        private const string IncorrectMinutes = "Minutes are incorrect!";
+        
         public DateAndTimeChecker(DateAndTime dateAndTime)
         {
             this.dateAndTime = dateAndTime;
         }
 
         /// <summary>
-        /// Check all elements of date and time
+        /// Write result of all tests, if they are incorrect
         /// </summary>
-        public void Check()
+        public void CheckResultsWriter()
         {
             if (!CheckYear())
             {
-                Console.WriteLine("Year is incorrect!");
+                Console.WriteLine(IncorrectYear);
             }
             if (!CheckMonth())
             {
-                Console.WriteLine("Month is incorrect!");
+                Console.WriteLine(IncorrectMonth);
             }
             if (!CheckDay())
             {
-                Console.WriteLine("Day is incorrect!");
+                Console.WriteLine(IncorrectDay);
             }
             if (!CheckHour())
             {
-                Console.WriteLine("Hour is incorrect!");
+                Console.WriteLine(IncorrectHour);
             }
             if (!CheckMinutes())
             {
-                Console.WriteLine("Minutes are incorrect!");
+                Console.WriteLine(IncorrectMinutes);
             }
         }
 
