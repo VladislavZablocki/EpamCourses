@@ -10,11 +10,11 @@ namespace task_DEV_7
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Inputer inputer = new Inputer();
             DateAndTime dateAndTime = new DateAndTime();
             Converter converter = new Converter();
             FormatChecker formatCheacker = new FormatChecker();
-            string inputString = inputer.Input().Trim();
+            Console.WriteLine("Input date and time in next format : HH:mm dd/MM/yyyy");
+            string inputString = Console.ReadLine().Trim();
             if (formatCheacker.Check(inputString))
             {
                 dateAndTime = converter.Convert(inputString);
