@@ -4,8 +4,6 @@ namespace task_DEV_12
 {
     class Program
     {
-       
-
         /// <summary>
         /// Entry point of programm. Input start and desired position and color of checker.
         /// Calculate number of step.
