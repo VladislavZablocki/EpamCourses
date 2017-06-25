@@ -7,35 +7,20 @@ namespace task_DEV_8
     /// </summary>
     class Program
     {
-        const int CoefficientFirstSecond = 1;
-        const int CoefficientSecondFirst = 2;
+       
         static void Main(string[] args)
         {
-            Inputer inputer = new Inputer();
-            Checker checker = new Checker();
-            Multiplier multiplier = new Multiplier();
-            Printer printer = new Printer();
-            double[,] firstMatrix = inputer.Input();
-            double[,] secondMatrix = inputer.Input();
-            double[,] result = null;
-            int checkCoefficient = checker.CheckPossibilityToMultiply(firstMatrix, secondMatrix);
-            if (checkCoefficient == 0)
+            try
             {
-                Console.WriteLine("Matrix can't multiply!");
+                Inputer inputer = new Inputer();
+                Matrix firstMatrix = new Matrix(inputer.InputElementsOfArray());
+                Matrix secondMatrix = new Matrix(inputer.InputElementsOfArray());
+                Matrix result = firstMatrix * secondMatrix;
+                result.Print();
             }
-            else
+            catch (InvalidOperationException ex)
             {
-                if (checkCoefficient == CoefficientFirstSecond)
-                {
-                    Console.WriteLine("First matrix multiplied with the second : ");
-                    result = multiplier.Multiply(firstMatrix, secondMatrix);
-                }
-                if (checkCoefficient == CoefficientSecondFirst)
-                {
-                    Console.WriteLine("Second matrix multiplied with the first : ");
-                    result = multiplier.Multiply(secondMatrix, firstMatrix);
-                }
-                printer.Print(result);
+                Console.WriteLine(ex.Message);
             }
             Console.ReadKey();
         }

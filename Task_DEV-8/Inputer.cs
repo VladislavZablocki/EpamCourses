@@ -11,7 +11,7 @@ namespace task_DEV_8
         /// Input counts of Line and Column. After that input elements of matrix
         /// </summary>
         /// <returns>matrix</returns>
-        public double[,] Input()
+        public double[,] InputElementsOfArray()
         {
             uint countLine = 0;
             uint countColumn = 0;
