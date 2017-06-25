@@ -21,27 +21,20 @@ namespace task_DEV_9
             List<string> resultValues = new List<string>();
             section = string.Concat("[", section.Trim(), "]");
             key = string.Concat(key.Trim(), '=');
-            try
+            using (StreamReader streamReader = new StreamReader(path))
             {
-                using (StreamReader streamReader = new StreamReader(path))
+                string line = string.Empty;
+                while ((line = streamReader.ReadLine()) != null)
                 {
-                    string line = string.Empty;
-                    while ((line = streamReader.ReadLine()) != null)
+                    if (string.Compare(line, section) == 0)
                     {
-                        if (string.Compare(line, section) == 0)
+                        List<string> valuesFromSection = FindValuesInSection(streamReader, key);
+                        if (valuesFromSection != null)
                         {
-                            List<string> valuesFromSection = FindValuesInSection(streamReader, key);
-                            if (valuesFromSection != null)
-                            {
-                                resultValues.AddRange(valuesFromSection);
-                            }
+                            resultValues.AddRange(valuesFromSection);
                         }
                     }
                 }
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Please check path to the file");
             }
             return resultValues;
         }
@@ -56,12 +49,8 @@ namespace task_DEV_9
         {
             List<string> valuesInSection = new List<string>();
             string line = string.Empty;
-            while ((line = streamReader.ReadLine()) != string.Empty)
+            while (!string.IsNullOrEmpty(line = streamReader.ReadLine()))
             {
-                if (line == null)
-                {
-                    break;
-                }
                 if (line.Contains(key) && string.Compare(line.Substring(0, key.Length), key) == 0)
                 {
                     valuesInSection.Add(line.Substring(key.Length));

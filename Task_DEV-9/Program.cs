@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace task_DEV_9
 {
@@ -12,10 +11,11 @@ namespace task_DEV_9
         /// <param name="args">Path to the file</param>
         static void Main(string[] args)
         {
-            Inputer inputer = new Inputer();
             Finder finder = new Finder();
-            string section = inputer.InputSection();
-            string key = inputer.InputKey();
+            Console.WriteLine("Input section :");
+            string section = Console.ReadLine();
+            Console.WriteLine("Input key : ");
+            string key = Console.ReadLine();
             try
             {
                 List<string> result = finder.FindValuesInFile(section, key, args[0]);
