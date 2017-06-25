@@ -23,13 +23,14 @@ namespace task_DEV_13
         const string ValidLoginPasswordTable = "ValidLoginPassword";
         const string InvalidLoginPasswordTable = "InvalidLoginPassword";
         const string Provider = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"F:\\LoginPassword.mdb\"";
+        const string SentMessage = "Отправленные";
         TestsMethods testMethods = new TestsMethods(Url);
         
         [TestMethod]
         [DataSource(Library, Provider, ValidLoginPasswordTable, DataAccessMethod.Sequential)]
         public void Chrome_ValidLoginPassword_MailPage()
         {
-            string expected = "Отправленные";
+            string expected = SentMessage;
             string login = Convert.ToString(testContextInstance.DataRow[1]);
             string password = Convert.ToString(testContextInstance.DataRow[2]);
             string actual = testMethods.GoToMailPage(new ChromeDriver(), login, password);
@@ -40,7 +41,7 @@ namespace task_DEV_13
         [DataSource(Library, Provider, ValidLoginPasswordTable, DataAccessMethod.Sequential)]
         public void Edge_ValidLoginPassword_MailPage()
         {
-            string expected = "Отправленные";
+            string expected = SentMessage;
             string login = Convert.ToString(testContextInstance.DataRow[1]);
             string password = Convert.ToString(testContextInstance.DataRow[2]);
             string actual = testMethods.GoToMailPage(new EdgeDriver(), login, password);
@@ -51,7 +52,7 @@ namespace task_DEV_13
         [DataSource(Library, Provider, ValidLoginPasswordTable, DataAccessMethod.Sequential)]
         public void FireFox_ValidLoginPassword_MailPage()
         {
-            string expected = "Отправленные";
+            string expected = SentMessage;
             string login = Convert.ToString(testContextInstance.DataRow[1]);
             string password = Convert.ToString(testContextInstance.DataRow[2]);
             string actual = testMethods.GoToMailPage(new FirefoxDriver(), login, password);
@@ -63,7 +64,7 @@ namespace task_DEV_13
         [ExpectedException(typeof(WebDriverTimeoutException))]
         public void Chrome_InvalidLoginPassword_Exception()
         {
-            string expected = "Отправленные";
+            string expected = SentMessage;
             string login = Convert.ToString(testContextInstance.DataRow[1]);
             string password = Convert.ToString(testContextInstance.DataRow[2]);
             string actual = testMethods.GoToMailPage(new ChromeDriver(), login, password);
@@ -75,7 +76,7 @@ namespace task_DEV_13
         [ExpectedException(typeof(WebDriverTimeoutException))]
         public void Edge_InvalidLoginPassword_Exception()
         {
-            string expected = "Отправленные";
+            string expected = SentMessage;
             string login = Convert.ToString(testContextInstance.DataRow[1]);
             string password = Convert.ToString(testContextInstance.DataRow[2]);
             string actual = testMethods.GoToMailPage(new EdgeDriver(), login, password);
@@ -87,7 +88,7 @@ namespace task_DEV_13
         [ExpectedException(typeof(WebDriverTimeoutException))]
         public void FireFox_InvalidLoginPassword_Exception()
         {
-            string expected = "Отправленные";
+            string expected = SentMessage;
             string login = Convert.ToString(testContextInstance.DataRow[1]);
             string password = Convert.ToString(testContextInstance.DataRow[2]);
             string actual = testMethods.GoToMailPage(new FirefoxDriver(), login, password);
